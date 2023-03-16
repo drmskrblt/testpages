@@ -1,0 +1,194 @@
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+
+// 1. variable scope => 1. global (root) / 2. local
+//:root{
+//    --orange: orange;
+//    --blue: blue;
+//
+//}
+//
+//h2{
+//    border-bottom: 2px solid var(--orange);
+//    background-color: var(--button-orange);
+//}
+//
+//
+//#container{
+//    color: var(--blue);
+//}
+//
+//button{
+//    --button-orange: #f97316;
+//
+//    background-color: var(--button-orange);
+//    border: 1px solid var(--button-orange);
+//}
+//
+//// 2. var(--name: fallback)
+//.box{
+//    background-color: var(--a, #ccc);
+//    padding: 10px;
+//    margin: 10px;
+//}
+//
+//.special{
+//    --a: #f90;
+//}
+
+// SASS
+$bg-color: #0e7490;
+$myFontSize: 18px;
+$myWidth: 400px;
+$size: 1em;
+$color: #fb7185;
+
+
+body{
+    background-color: $bg-color;
+    font-size: $myFontSize;
+    color: $color;
+}
+
+#container{
+    margin: $size * 3;
+    width: $myWidth / 2;
+}
+
+//SASS/SCSS
+//3. SASS variable scope
+
+p{
+    $color: rgb(8, 195, 11);
+    color: $color;
+}
+
+span{
+    color: $color;
+}
+
+//4.
+.myClass{
+    display: flex;
+    justify-content: space-around;
+}
+
+.myClass li {
+    list-style: none;
+    background-color: #22d3ee;
+    &:hover{
+        color: black;
+    }
+}
+
+.nested{
+    background-color: #10b981;
+    p{
+        color: white;
+    }
+}
+
+// .nested{
+//     background-color: #10b981;
+// }
+
+// .nested p{
+//     color: white;
+// }
+
+
+//4.2
+
+
+// nav ul{
+//     margin: 0;
+//     padding: 0;
+//     list-style: none;
+// }
+
+// nav li {
+//     display: inline-block;
+// }
+
+// nav li a {
+//     text-decoration: none;
+// }
+
+nav{
+    ul{
+        margin: 0;
+        padding: 0;
+        list-style: 0;
+    }
+    li{
+        display: inline-block;
+    }
+    a{
+        text-decoration: none;
+    }
+}
+
+// 4.3
+
+ul >{
+    li{
+        list-style: none;
+    }
+}
+
+h2{
+    +p{
+        border: 2px solid;
+    }
+    +a{
+        color: red($color: #000000);
+    }
+}
+
+// ul > li{
+//     list-style: none;
+// }
+
+// h2 + p{
+//     border: 2px solid;
+// }
+
+// Nested properties
+
+.example-1{
+    font-size: 1rem;
+    transition:{
+        property: font-size;
+        duration: 1s;
+        delay: 2s;
+    }
+    &:hover{
+        font-size: 2rem;
+    }
+}
+
+
+
+
+.example-1{
+    font-size: 1rem;
+    transition-property: font-size;
+    transition-duration: 1s;
+    transition-delay: 2s;
+}
+
+.example-1:hover{
+    font-size: 2rem;
+}
+
+// IMPORT AND EXTEND AND MIXIN AND PARTIAL
+
+$colors:(
+    main: #facc15,
+    second: #84cc16,
+);
+
+$border-default: 10px solid map-get($colors, second);
+
+.lastClass{
+    border-bottom: $border-default;
+}
